@@ -21,7 +21,7 @@
     "axios": ">=0.21.1",
     "cookies-next": "^2.1.2",
     "mermaid": "^10.9.1",
-    "next": "^13.4.9",
+    "next": "^14.2.15",
     "notion-client": "^6.16.0",
     "notion-types": "^6.16.0",
     "notion-utils": "^6.16.0",
