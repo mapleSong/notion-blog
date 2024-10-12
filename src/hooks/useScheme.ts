@@ -8,36 +8,40 @@ import { SchemeType } from "src/types"
 type SetScheme = (scheme: SchemeType) => void
 
 const useScheme = (): [SchemeType, SetScheme] => {
-  const queryClient = useQueryClient()
-  const followsSystemTheme = CONFIG.blog.scheme === "system"
+    const queryClient = useQueryClient()
+    const followsSystemTheme = CONFIG.blog.scheme === "system"
 
-  const { data } = useQuery({
-    queryKey: queryKey.scheme(),
-    enabled: false,
-    initialData: followsSystemTheme
-      ? "dark"
-      : (CONFIG.blog.scheme as SchemeType),
-  })
+    const { data } = useQuery({
+        queryKey: queryKey.scheme(),
+        enabled: false,
+        initialData: followsSystemTheme
+            ? "dark"
+            : (CONFIG.blog.scheme as SchemeType),
+    })
 
-  const setScheme = (scheme: SchemeType) => {
-    setCookie("scheme", scheme)
+    const setScheme = (scheme: SchemeType) => {
+        setCookie("scheme", scheme)
 
-    queryClient.setQueryData(queryKey.scheme(), scheme)
-  }
+        queryClient.setQueryData(queryKey.scheme(), scheme)
 
-  useEffect(() => {
-    if (!window) return
+        const root = window.document.documentElement;
+        root.classList.remove(scheme === 'dark' ? 'light' : 'dark');
+        root.classList.add(scheme);
+    }
 
-    const cachedScheme = getCookie("scheme") as SchemeType
-    const defaultScheme = followsSystemTheme
-      ? window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light"
-      : data
-    setScheme(cachedScheme || defaultScheme)
-  }, [])
+    useEffect(() => {
+        if (!window) return
 
-  return [data, setScheme]
+        const cachedScheme = getCookie("scheme") as SchemeType
+        const defaultScheme = followsSystemTheme
+            ? window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light"
+            : data
+        setScheme(cachedScheme || defaultScheme)
+    }, [])
+
+    return [data, setScheme]
 }
 
 export default useScheme
