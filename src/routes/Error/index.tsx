@@ -1,51 +1,22 @@
-import styled from "@emotion/styled"
-import React from "react"
-import { Emoji } from "src/components/Emoji"
+import React from "react";
 
-type Props = {}
+import { Emoji } from "src/components/Emoji";
+
+type Props = {};
 
 const CustomError: React.FC<Props> = () => {
   return (
-    <StyledWrapper>
-      <div className="wrapper">
-        <div className="top">
+    <div className="mx-auto max-w-4xl rounded-3xl px-6 py-12">
+      <div className="flex flex-col items-center gap-10 py-20">
+        <div className="flex items-center text-6xl leading-none">
           <div>4</div>
           <Emoji>🤔</Emoji>
           <div>4</div>
         </div>
-        <div className="text">Post not found</div>
+        <div className="text-3xl leading-9 text-gray-700">Post not found</div>
       </div>
-    </StyledWrapper>
-  )
-}
+    </div>
+  );
+};
 
-export default CustomError
-
-const StyledWrapper = styled.div`
-  margin: 0 auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  border-radius: 1.5rem;
-  max-width: 56rem;
-  .wrapper {
-    display: flex;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-    flex-direction: column;
-    gap: 2.5rem;
-    align-items: center;
-    > .top {
-      display: flex;
-      align-items: center;
-      font-size: 3.75rem;
-      line-height: 1;
-    }
-    > .text {
-      font-size: 1.875rem;
-      line-height: 2.25rem;
-      color: ${({ theme }) => theme.colors.gray11};
-    }
-  }
-`
+export default CustomError;

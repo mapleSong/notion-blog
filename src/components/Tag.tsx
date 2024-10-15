@@ -1,36 +1,25 @@
-import styled from "@emotion/styled"
-import { useRouter } from "next/router"
-import React from "react"
+import React from 'react';
+
+import { useRouter } from 'next/router';
 
 type Props = {
-  children: string
-}
+  children: string;
+};
 
 const Tag: React.FC<Props> = ({ children }) => {
-  const router = useRouter()
+  const router = useRouter();
 
   const handleClick = (value: string) => {
-    router.push(`/?tag=${value}`)
-  }
+    router.push(`/?tag=${value}`);
+  };
   return (
-    <StyledWrapper onClick={() => handleClick(children)}>
+    <div
+      className="cursor-pointer rounded-full bg-gray-200 pb-1 pl-2 pr-2 pt-1 text-xs font-normal text-[rgb(126,126,126)] dark:bg-[rgb(46,46,46)]"
+      onClick={() => handleClick(children)}
+    >
       {children}
-    </StyledWrapper>
-  )
-}
+    </div>
+  );
+};
 
-export default Tag
-
-const StyledWrapper = styled.div`
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  border-radius: 50px;
-  font-size: 0.75rem;
-  line-height: 1rem;
-  font-weight: 400;
-  color: ${({ theme }) => theme.colors.gray10};
-  background-color: ${({ theme }) => theme.colors.gray5};
-  cursor: pointer;
-`
+export default Tag;

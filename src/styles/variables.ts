@@ -5,4 +5,4 @@ export const variables = {
   paddingMd: 20,
   widthLg: 1480,
   widthMd: 1280,
-}
+};

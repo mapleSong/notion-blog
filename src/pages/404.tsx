@@ -1,16 +1,17 @@
-import { CONFIG } from "../../site.config"
-import { NextPageWithLayout, TPosts, TTags } from "../types"
-import CustomError from "../routes/Error"
-import MetaConfig from "src/components/MetaConfig"
+import MetaConfig from "src/components/MetaConfig";
+
+import { CONFIG } from "../../site.config";
+import CustomError from "../routes/Error";
+import { NextPageWithLayout, TPosts, TTags } from "../types";
 
 type Props = {
-  tags: TTags
-  posts: TPosts
-}
+  tags: TTags;
+  posts: TPosts;
+};
 
 const NotFoundPage: NextPageWithLayout<Props> = () => {
-  return <CustomError />
-}
+  return <CustomError />;
+};
 
 NotFoundPage.getLayout = (page) => {
   return (
@@ -25,7 +26,7 @@ NotFoundPage.getLayout = (page) => {
       />
       {page}
     </>
-  )
-}
+  );
+};
 
-export default NotFoundPage
+export default NotFoundPage;

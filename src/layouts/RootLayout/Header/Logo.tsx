@@ -1,15 +1,13 @@
-import Link from "next/link"
-import { CONFIG } from "site.config"
-import styled from "@emotion/styled"
+import Link from "next/link";
+
+import { CONFIG } from "site.config";
 
 const Logo = () => {
   return (
-    <StyledWrapper href="/" aria-label={CONFIG.blog.title}>
-      {CONFIG.blog.title}
-    </StyledWrapper>
-  )
-}
+    <Link href="/" aria-label={CONFIG.blog.title} className="text-lg">
+      TEST
+    </Link>
+  );
+};
 
-export default Logo
-
-const StyledWrapper = styled(Link)``
+export default Logo;

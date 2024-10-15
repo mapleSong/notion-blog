@@ -1,23 +1,24 @@
-import { TPost } from "src/types"
-import { CONFIG } from "site.config"
-import dynamic from "next/dynamic"
+import dynamic from "next/dynamic";
+
+import { CONFIG } from "site.config";
+import { TPost } from "src/types";
 
 const UtterancesComponent = dynamic(
   () => {
-    return import("./Utterances")
+    return import("./Utterances");
   },
-  { ssr: false }
-)
+  { ssr: false },
+);
 const CusdisComponent = dynamic(
   () => {
-    return import("./Cusdis")
+    return import("./Cusdis");
   },
-  { ssr: false }
-)
+  { ssr: false },
+);
 
 type Props = {
-  data: TPost
-}
+  data: TPost;
+};
 
 const CommentBox: React.FC<Props> = ({ data }) => {
   return (
@@ -27,7 +28,7 @@ const CommentBox: React.FC<Props> = ({ data }) => {
         <CusdisComponent id={data.id} slug={data.slug} title={data.title} />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default CommentBox
+export default CommentBox;

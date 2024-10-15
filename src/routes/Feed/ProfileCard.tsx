@@ -1,81 +1,34 @@
-import styled from "@emotion/styled"
-import Image from "next/image"
-import React from "react"
-import { CONFIG } from "site.config"
-import { Emoji } from "src/components/Emoji"
+import React from 'react';
 
-type Props = {}
+import Image from 'next/image';
+
+import { CONFIG } from 'site.config';
+import { Emoji } from 'src/components/Emoji';
+
+type Props = {};
 
 const ProfileCard: React.FC<Props> = () => {
   return (
-    <StyledWrapper>
-      <div className="title">
+    <div className="p-1 mb-3">
+      <div className="p-1 mb-3">
         <Emoji>💻</Emoji> Profile
       </div>
-      <div className="content">
-        <div className="top">
+      <div className="mb-9 w-full rounded-xl bg-white dark:bg-[rgb(40,40,40)] md:p-4 lg:p-4">
+        <div className="relative w-full pb-full">
           <Image src={CONFIG.profile.image} fill alt="" />
         </div>
-        <div className="mid">
-          <div className=" name">{CONFIG.profile.name}</div>
-          <div className="role">{CONFIG.profile.role}</div>
-          <div className="text-sm mb-2">{CONFIG.profile.bio}</div>
+        <div className="flex flex-col items-center p-2">
+          <div className="text-xl italic font-bold leading-7">
+            {CONFIG.profile.name}
+          </div>
+          <div className="mb-4 text-sm leading-5 text-gray-700 dark:text-gray-400">
+            {CONFIG.profile.role}
+          </div>
+          <div className="mb-2 text-sm leading-5">{CONFIG.profile.bio}</div>
         </div>
       </div>
-    </StyledWrapper>
-  )
-}
+    </div>
+  );
+};
 
-export default ProfileCard
-
-const StyledWrapper = styled.div`
-  > .title {
-    padding: 0.25rem;
-    margin-bottom: 0.75rem;
-  }
-  > .content {
-    margin-bottom: 2.25rem;
-    border-radius: 1rem;
-    width: 100%;
-    background-color: ${({ theme }) =>
-      theme.scheme === "light" ? "white" : theme.colors.gray4};
-    @media (min-width: 768px) {
-      padding: 1rem;
-    }
-    @media (min-width: 1024px) {
-      padding: 1rem;
-    }
-    .top {
-      position: relative;
-      width: 100%;
-      &:after {
-        content: "";
-        display: block;
-        padding-bottom: 100%;
-      }
-    }
-    .mid {
-      display: flex;
-      padding: 0.5rem;
-      flex-direction: column;
-      align-items: center;
-      .name {
-        font-size: 1.25rem;
-        line-height: 1.75rem;
-        font-style: italic;
-        font-weight: 700;
-      }
-      .role {
-        margin-bottom: 1rem;
-        font-size: 0.875rem;
-        line-height: 1.25rem;
-        color: ${({ theme }) => theme.colors.gray11};
-      }
-      .bio {
-        margin-bottom: 0.5rem;
-        font-size: 0.875rem;
-        line-height: 1.25rem;
-      }
-    }
-  }
-`
+export default ProfileCard;

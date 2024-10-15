@@ -1,5 +1,6 @@
-import Document, { Html, Head, Main, NextScript } from "next/document"
-import { CONFIG } from "site.config"
+import Document, { Head, Html, Main, NextScript } from "next/document";
+
+import { CONFIG } from "site.config";
 
 class MyDocument extends Document {
   render() {
@@ -42,8 +43,8 @@ class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }
 
-export default MyDocument
+export default MyDocument;

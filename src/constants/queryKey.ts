@@ -4,4 +4,4 @@ export const queryKey = {
   tags: () => ["tags"],
   categories: () => ["categories"],
   post: (slug: string) => ["post", slug],
-}
+};

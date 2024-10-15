@@ -1,45 +1,44 @@
-import { CONFIG } from "site.config"
-import { ReactCusdis } from "react-cusdis"
-import { useCallback, useEffect, useState } from "react"
-import styled from "@emotion/styled"
-import useScheme from "src/hooks/useScheme"
-import { useRouter } from "next/router"
+import { useCallback, useEffect, useState } from "react";
+import { ReactCusdis } from "react-cusdis";
+
+import { CONFIG } from "site.config";
+import useScheme from "src/hooks/useScheme";
 
 type Props = {
-  id: string
-  slug: string
-  title: string
-}
+  id: string;
+  slug: string;
+  title: string;
+};
 
 const Cusdis: React.FC<Props> = ({ id, slug, title }) => {
-  const [value, setValue] = useState(0)
-  const [scheme] = useScheme()
+  const [value, setValue] = useState(0);
+  const [scheme] = useScheme();
 
   const onDocumentElementChange = useCallback(() => {
-    setValue((value) => value + 1)
-  }, [])
+    setValue((value) => value + 1);
+  }, []);
 
   useEffect(() => {
     const changesObserver = new MutationObserver(
       (mutations: MutationRecord[]) => {
         mutations.forEach((mutation: MutationRecord) => {
-          onDocumentElementChange()
-        })
-      }
-    )
+          onDocumentElementChange();
+        });
+      },
+    );
 
     changesObserver.observe(document.documentElement, {
       attributeFilter: ["class"],
-    })
+    });
 
     return () => {
-      changesObserver.disconnect()
-    }
-  }, [onDocumentElementChange])
+      changesObserver.disconnect();
+    };
+  }, [onDocumentElementChange]);
 
   return (
     <>
-      <StyledWrapper id="comments">
+      <div id="comments" className="mt-10">
         <ReactCusdis
           key={value}
           attrs={{
@@ -51,13 +50,9 @@ const Cusdis: React.FC<Props> = ({ id, slug, title }) => {
             theme: scheme,
           }}
         />
-      </StyledWrapper>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Cusdis
-
-const StyledWrapper = styled.div`
-  margin-top: 2.5rem;
-`
+export default Cusdis;

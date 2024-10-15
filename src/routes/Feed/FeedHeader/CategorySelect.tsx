@@ -1,19 +1,20 @@
-import useDropdown from "src/hooks/useDropdown"
-import { useRouter } from "next/router"
-import React from "react"
-import { MdExpandMore } from "react-icons/md"
-import { DEFAULT_CATEGORY } from "src/constants"
-import styled from "@emotion/styled"
-import { useCategoriesQuery } from "src/hooks/useCategoriesQuery"
+import React from "react";
+import { MdExpandMore } from "react-icons/md";
 
-type Props = {}
+import { useRouter } from "next/router";
+
+import { DEFAULT_CATEGORY } from "src/constants";
+import { useCategoriesQuery } from "src/hooks/useCategoriesQuery";
+import useDropdown from "src/hooks/useDropdown";
+
+type Props = {};
 
 const CategorySelect: React.FC<Props> = () => {
-  const router = useRouter()
-  const data = useCategoriesQuery()
-  const [dropdownRef, opened, handleOpen] = useDropdown()
+  const router = useRouter();
+  const data = useCategoriesQuery();
+  const [dropdownRef, opened, handleOpen] = useDropdown();
 
-  const currentCategory = `${router.query.category || ``}` || DEFAULT_CATEGORY
+  const currentCategory = `${router.query.category || ``}` || DEFAULT_CATEGORY;
 
   const handleOptionClick = (category: string) => {
     router.push({
@@ -21,18 +22,22 @@ const CategorySelect: React.FC<Props> = () => {
         ...router.query,
         category,
       },
-    })
-  }
+    });
+  };
   return (
-    <StyledWrapper>
-      <div ref={dropdownRef} className="wrapper" onClick={handleOpen}>
+    <div className="relative">
+      <div
+        ref={dropdownRef}
+        className="mb-2 mt-2 flex cursor-pointer items-center gap-1 text-xl font-bold"
+        onClick={handleOpen}
+      >
         {currentCategory} Posts <MdExpandMore />
       </div>
       {opened && (
-        <div className="content">
+        <div className="absolute z-40 rounded-xl bg-gray-200 p-1 text-gray-900 shadow-lg">
           {Object.keys(data).map((key, idx) => (
             <div
-              className="item"
+              className="cursor-pointer whitespace-nowrap rounded-xl p-1 pl-2 pr-2 text-sm hover:bg-gray-400"
               key={idx}
               onClick={() => handleOptionClick(key)}
             >
@@ -41,47 +46,8 @@ const CategorySelect: React.FC<Props> = () => {
           ))}
         </div>
       )}
-    </StyledWrapper>
-  )
-}
+    </div>
+  );
+};
 
-export default CategorySelect
-
-const StyledWrapper = styled.div`
-  position: relative;
-  > .wrapper {
-    display: flex;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    gap: 0.25rem;
-    align-items: center;
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-    font-weight: 700;
-    cursor: pointer;
-  }
-  > .content {
-    position: absolute;
-    z-index: 40;
-    padding: 0.25rem;
-    border-radius: 0.75rem;
-    background-color: ${({ theme }) => theme.colors.gray2};
-    color: ${({ theme }) => theme.colors.gray10};
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    > .item {
-      padding: 0.25rem;
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-      border-radius: 0.75rem;
-      font-size: 0.875rem;
-      line-height: 1.25rem;
-      white-space: nowrap;
-      cursor: pointer;
-
-      :hover {
-        background-color: ${({ theme }) => theme.colors.gray4};
-      }
-    }
-  }
-`
+export default CategorySelect;

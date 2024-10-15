@@ -1,5 +1,6 @@
-import Script from "next/script"
-import { CONFIG } from "site.config"
+import Script from "next/script";
+
+import { CONFIG } from "site.config";
 
 const Scripts: React.FC = () => (
   <>
@@ -19,6 +20,6 @@ const Scripts: React.FC = () => (
       </>
     )}
   </>
-)
+);
 
-export default Scripts
+export default Scripts;

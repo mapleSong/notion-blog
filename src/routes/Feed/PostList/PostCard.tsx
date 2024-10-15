@@ -1,53 +1,60 @@
-import Link from "next/link"
-import { CONFIG } from "site.config"
-import { formatDate } from "src/libs/utils"
-import Tag from "../../../components/Tag"
-import { TPost } from "../../../types"
-import Image from "next/image"
-import Category from "../../../components/Category"
-import styled from "@emotion/styled"
+import Image from 'next/image';
+import Link from 'next/link';
+
+import { CONFIG } from 'site.config';
+import { formatDate } from 'src/libs/utils';
+
+import Category from '../../../components/Category';
+import Tag from '../../../components/Tag';
+import { TPost } from '../../../types';
 
 type Props = {
-  data: TPost
-}
+  data: TPost;
+};
 
 const PostCard: React.FC<Props> = ({ data }) => {
-  const category = (data.category && data.category?.[0]) || undefined
+  const category = (data.category && data.category?.[0]) || undefined;
 
   return (
-    <StyledWrapper href={`/${data.slug}`}>
-      <article>
+    <Link href={`/${data.slug}`} className="block relative mb-6">
+      <article className="duration-300relative overflow-hidden rounded-lg bg-white shadow-md transition-shadow hover:shadow-lg dark:bg-[rgb(40,40,40)]">
         {category && (
-          <div className="category">
+          <div className="absolute top-4 left-4 z-10">
             <Category>{category}</Category>
           </div>
         )}
         {data.thumbnail && (
-          <div className="thumbnail">
+          <div className="relative w-full bg-gray-200 pb-[66%] lg:pb-[50%]">
             <Image
               src={data.thumbnail}
               fill
               alt={data.title}
-              css={{ objectFit: "cover" }}
+              className="object-cover"
             />
           </div>
         )}
-        <div data-thumb={!!data.thumbnail} data-category={!!category} className="content">
-          <header className="top">
-            <h2>{data.title}</h2>
+        <div
+          className={`p-4 ${!data.thumbnail ? 'pt-14' : ''} ${!category ? 'pt-6' : ''}`}
+        >
+          <header className="flex flex-col justify-between mb-2 md:flex-row md:items-baseline">
+            <h2 className="mb-2 text-lg font-medium cursor-pointer md:mb-0 md:text-xl">
+              {data.title}
+            </h2>
           </header>
-          <div className="date">
-            <div className="content">
+          <div className="flex gap-2 items-center mb-4 text-sm dark:text-gray-400">
+            <div>
               {formatDate(
                 data?.date?.start_date || data.createdTime,
-                CONFIG.lang
+                CONFIG.lang,
               )}
             </div>
           </div>
-          <div className="summary">
-            <p>{data.summary}</p>
+          <div className="mb-4">
+            <p className="hidden text-gray-700 dark:text-gray-300 md:block">
+              {data.summary}
+            </p>
           </div>
-          <div className="tags">
+          <div className="flex gap-2">
             {data.tags &&
               data.tags.map((tag: string, idx: number) => (
                 <Tag key={idx}>{tag}</Tag>
@@ -55,111 +62,8 @@ const PostCard: React.FC<Props> = ({ data }) => {
           </div>
         </div>
       </article>
-    </StyledWrapper>
-  )
-}
+    </Link>
+  );
+};
 
-export default PostCard
-
-const StyledWrapper = styled(Link)`
-  article {
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 1.5rem;
-    border-radius: 1rem;
-    background-color: ${({ theme }) =>
-      theme.scheme === "light" ? "white" : theme.colors.gray4};
-    transition-property: box-shadow;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 300ms;
-
-    @media (min-width: 768px) {
-      margin-bottom: 2rem;
-    }
-
-    :hover {
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-        0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    }
-    > .category {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      z-index: 10;
-    }
-
-    > .thumbnail {
-      position: relative;
-      width: 100%;
-      background-color: ${({ theme }) => theme.colors.gray2};
-      padding-bottom: 66%;
-
-      @media (min-width: 1024px) {
-        padding-bottom: 50%;
-      }
-    }
-    > .content {
-      padding: 1rem;
-
-      &[data-thumb="false"] {
-        padding-top: 3.5rem;
-      }
-      &[data-category="false"] {
-        padding-top: 1.5rem;
-      }
-      > .top {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-
-        @media (min-width: 768px) {
-          flex-direction: row;
-          align-items: baseline;
-        }
-        h2 {
-          margin-bottom: 0.5rem;
-          font-size: 1.125rem;
-          line-height: 1.75rem;
-          font-weight: 500;
-
-          cursor: pointer;
-
-          @media (min-width: 768px) {
-            font-size: 1.25rem;
-            line-height: 1.75rem;
-          }
-        }
-      }
-      > .date {
-        display: flex;
-        margin-bottom: 1rem;
-        gap: 0.5rem;
-        align-items: center;
-        .content {
-          font-size: 0.875rem;
-          line-height: 1.25rem;
-          color: ${({ theme }) => theme.colors.gray10};
-          @media (min-width: 768px) {
-            margin-left: 0;
-          }
-        }
-      }
-      > .summary {
-        margin-bottom: 1rem;
-        p {
-          display: none;
-          line-height: 2rem;
-          color: ${({ theme }) => theme.colors.gray11};
-
-          @media (min-width: 768px) {
-            display: block;
-          }
-        }
-      }
-      > .tags {
-        display: flex;
-        gap: 0.5rem;
-      }
-    }
-  }
-`
+export default PostCard;

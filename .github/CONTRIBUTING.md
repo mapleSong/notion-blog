@@ -32,12 +32,15 @@ To set up a development environment, please follow these steps:
    ```
 
 ### Use Dockerfile
+
 1. Run setup command
+
    ```sh
    make setup NOTION_PAGE_ID='YOUR_NOTION_PAGE_ID'
    ```
 
 2. Start the development Server.
+
    ```sh
    make dev
    ```
