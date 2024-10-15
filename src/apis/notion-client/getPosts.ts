@@ -1,9 +1,9 @@
-import { NotionAPI } from "notion-client";
-import { idToUuid } from "notion-utils";
-import { CONFIG } from "site.config";
-import getAllPageIds from "src/libs/utils/notion/getAllPageIds";
-import getPageProperties from "src/libs/utils/notion/getPageProperties";
-import { TPosts } from "src/types";
+import { NotionAPI } from 'notion-client';
+import { idToUuid } from 'notion-utils';
+import { CONFIG } from 'site.config';
+import getAllPageIds from 'src/libs/utils/notion/getAllPageIds';
+import getPageProperties from 'src/libs/utils/notion/getPageProperties';
+import { TPosts } from 'src/types';
 
 /**
  * @param {{ includePages: boolean }} - false: posts only / true: include pages
@@ -23,8 +23,8 @@ export const getPosts = async () => {
 
   // Check Type
   if (
-    rawMetadata?.type !== "collection_view_page" &&
-    rawMetadata?.type !== "collection_view"
+    rawMetadata?.type !== 'collection_view_page' &&
+    rawMetadata?.type !== 'collection_view'
   ) {
     return [];
   } else {

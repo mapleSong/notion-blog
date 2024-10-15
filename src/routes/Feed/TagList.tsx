@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
-import { Emoji } from "src/components/Emoji";
-import { useTagsQuery } from "src/hooks/useTagsQuery";
+import { Emoji } from 'src/components/Emoji';
+import { useTagsQuery } from 'src/hooks/useTagsQuery';
 
 type Props = {};
 
@@ -46,8 +46,8 @@ const TagList: React.FC<Props> = () => {
             onClick={() => handleClickTag(key)}
             className={`my-1 block flex-shrink-0 cursor-pointer rounded-lg p-1 px-4 text-sm leading-5 ${
               key === currentTag
-                ? "bg-gray-200 text-gray-800"
-                : "hover:bg-gray-200"
+                ? 'bg-gray-200 text-gray-800'
+                : 'hover:bg-gray-200'
             }`}
           >
             {key}

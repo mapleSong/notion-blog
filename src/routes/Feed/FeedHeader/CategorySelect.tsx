@@ -1,11 +1,11 @@
-import React from "react";
-import { MdExpandMore } from "react-icons/md";
+import React from 'react';
+import { MdExpandMore } from 'react-icons/md';
 
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
-import { DEFAULT_CATEGORY } from "src/constants";
-import { useCategoriesQuery } from "src/hooks/useCategoriesQuery";
-import useDropdown from "src/hooks/useDropdown";
+import { DEFAULT_CATEGORY } from 'src/constants';
+import { useCategoriesQuery } from 'src/hooks/useCategoriesQuery';
+import useDropdown from 'src/hooks/useDropdown';
 
 type Props = {};
 

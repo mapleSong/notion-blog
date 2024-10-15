@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import mermaid from "mermaid";
-import { queryKey } from "src/constants/queryKey";
-import useScheme from "src/hooks/useScheme";
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import mermaid from 'mermaid';
+import { queryKey } from 'src/constants/queryKey';
+import useScheme from 'src/hooks/useScheme';
 
 /**
  *  Wait for mermaid to be defined in the dom
@@ -13,7 +13,7 @@ const waitForMermaid = (interval = 100, timeout = 5000) => {
   return new Promise<HTMLCollectionOf<Element>>((resolve, reject) => {
     const startTime = Date.now();
     const elements: HTMLCollectionOf<Element> =
-      document.getElementsByClassName("language-mermaid");
+      document.getElementsByClassName('language-mermaid');
 
     const checkMerMaidCode = () => {
       if (mermaid.render !== undefined && elements.length > 0) {
@@ -41,7 +41,7 @@ const useMermaidEffect = () => {
     if (!isFetched) return;
     mermaid.initialize({
       startOnLoad: true,
-      theme: (data as "dark" | "light") === "dark" ? "dark" : "default",
+      theme: (data as 'dark' | 'light') === 'dark' ? 'dark' : 'default',
     });
 
     if (!document) return;
@@ -49,26 +49,26 @@ const useMermaidEffect = () => {
     waitForMermaid()
       .then(async (elements) => {
         const promises = Array.from(elements)
-          .filter((elements) => elements.tagName === "PRE")
+          .filter((elements) => elements.tagName === 'PRE')
           .map(async (element, i) => {
             if (memoMermaid.get(i) !== undefined) {
               const svg = await mermaid
-                .render("mermaid" + i, memoMermaid.get(i) || "")
+                .render('mermaid' + i, memoMermaid.get(i) || '')
                 .then((res) => res.svg);
               element.animate(
                 [
-                  { easing: "ease-in", opacity: 0 },
-                  { easing: "ease-out", opacity: 1 },
+                  { easing: 'ease-in', opacity: 0 },
+                  { easing: 'ease-out', opacity: 1 },
                 ],
-                { duration: 300, fill: "both" },
+                { duration: 300, fill: 'both' },
               );
               element.innerHTML = svg;
               return;
             }
             const svg = await mermaid
-              .render("mermaid" + i, element.textContent || "")
+              .render('mermaid' + i, element.textContent || '')
               .then((res) => res.svg);
-            setMemoMermaid(memoMermaid.set(i, element.textContent ?? ""));
+            setMemoMermaid(memoMermaid.set(i, element.textContent ?? ''));
             element.innerHTML = svg;
           });
         await Promise.all(promises);

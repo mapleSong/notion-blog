@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useState } from "react";
-import { ReactCusdis } from "react-cusdis";
+import { useCallback, useEffect, useState } from 'react';
+import { ReactCusdis } from 'react-cusdis';
 
-import { CONFIG } from "site.config";
-import useScheme from "src/hooks/useScheme";
+import { CONFIG } from 'site.config';
+import useScheme from 'src/hooks/useScheme';
 
 type Props = {
   id: string;
@@ -28,7 +28,7 @@ const Cusdis: React.FC<Props> = ({ id, slug, title }) => {
     );
 
     changesObserver.observe(document.documentElement, {
-      attributeFilter: ["class"],
+      attributeFilter: ['class'],
     });
 
     return () => {

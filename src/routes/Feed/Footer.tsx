@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { CONFIG } from "site.config";
+import { CONFIG } from 'site.config';
 
 const d = new Date();
 const y = d.getFullYear();

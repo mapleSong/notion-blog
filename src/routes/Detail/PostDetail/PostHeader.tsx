@@ -17,10 +17,10 @@ const PostHeader: React.FC<Props> = ({ data }) => {
       <h1 className="text-3xl font-bold">{data.title}</h1>
       {data.type[0] !== 'Paper' && (
         <nav className="mt-6 text-gray-700 dark:text-[rgb(160,160,160)]">
-          <div className="flex gap-3 items-center mb-3">
+          <div className="mb-3 flex items-center gap-3">
             {data.author && data.author[0] && data.author[0].name && (
               <>
-                <div className="flex gap-2 items-center">
+                <div className="flex items-center gap-2">
                   <Image
                     className="rounded-full"
                     src={data.author[0].profile_photo || CONFIG.profile.image}
@@ -30,7 +30,7 @@ const PostHeader: React.FC<Props> = ({ data }) => {
                   />
                   <div>{data.author[0].name}</div>
                 </div>
-                <div className="self-stretch my-1 w-px bg-gray-600"></div>
+                <div className="my-1 w-px self-stretch bg-gray-600"></div>
               </>
             )}
             <div className="mr-2 md:ml-0">
@@ -40,9 +40,9 @@ const PostHeader: React.FC<Props> = ({ data }) => {
               )}
             </div>
           </div>
-          <div className="flex items-center mb-4">
+          <div className="mb-4 flex items-center">
             {data.tags && (
-              <div className="flex overflow-x-auto flex-nowrap gap-2 max-w-full">
+              <div className="flex max-w-full flex-nowrap gap-2 overflow-x-auto">
                 {data.tags.map((tag: string) => (
                   <Tag key={tag}>{tag}</Tag>
                 ))}

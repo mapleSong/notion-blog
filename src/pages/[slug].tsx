@@ -1,22 +1,22 @@
-import { GetStaticProps } from "next";
+import { GetStaticProps } from 'next';
 
-import { dehydrate } from "@tanstack/react-query";
-import { CONFIG } from "site.config";
-import { getPosts, getRecordMap } from "src/apis";
-import MetaConfig from "src/components/MetaConfig";
-import { queryKey } from "src/constants/queryKey";
-import usePostQuery from "src/hooks/usePostQuery";
-import { queryClient } from "src/libs/react-query";
-import { filterPosts } from "src/libs/utils/notion";
-import { FilterPostsOptions } from "src/libs/utils/notion/filterPosts";
-import Detail from "src/routes/Detail";
-import CustomError from "src/routes/Error";
+import { dehydrate } from '@tanstack/react-query';
+import { CONFIG } from 'site.config';
+import { getPosts, getRecordMap } from 'src/apis';
+import MetaConfig from 'src/components/MetaConfig';
+import { queryKey } from 'src/constants/queryKey';
+import usePostQuery from 'src/hooks/usePostQuery';
+import { queryClient } from 'src/libs/react-query';
+import { filterPosts } from 'src/libs/utils/notion';
+import { FilterPostsOptions } from 'src/libs/utils/notion/filterPosts';
+import Detail from 'src/routes/Detail';
+import CustomError from 'src/routes/Error';
 
-import { NextPageWithLayout } from "../types";
+import { NextPageWithLayout } from '../types';
 
 const filter: FilterPostsOptions = {
-  acceptStatus: ["Public", "PublicOnDetail"],
-  acceptType: ["Paper", "Post", "Page"],
+  acceptStatus: ['Public', 'PublicOnDetail'],
+  acceptType: ['Paper', 'Post', 'Page'],
 };
 
 export const getStaticPaths = async () => {
@@ -63,13 +63,13 @@ const DetailPage: NextPageWithLayout = () => {
     CONFIG.ogImageGenerateURL ??
     `${CONFIG.ogImageGenerateURL}/${encodeURIComponent(post.title)}.png`;
 
-  const date = post.date?.start_date || post.createdTime || "";
+  const date = post.date?.start_date || post.createdTime || '';
 
   const meta = {
     title: post.title,
     date: new Date(date).toISOString(),
     image: image,
-    description: post.summary || "",
+    description: post.summary || '',
     type: post.type[0],
     url: `${CONFIG.link}/${post.slug}`,
   };

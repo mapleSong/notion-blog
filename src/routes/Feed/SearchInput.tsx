@@ -1,6 +1,6 @@
-import React, { InputHTMLAttributes } from "react";
+import React, { InputHTMLAttributes } from 'react';
 
-import { Emoji } from "src/components/Emoji";
+import { Emoji } from 'src/components/Emoji';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {}
 

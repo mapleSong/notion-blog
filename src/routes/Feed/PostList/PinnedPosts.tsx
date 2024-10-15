@@ -1,10 +1,10 @@
-import React, { useMemo } from "react";
+import React, { useMemo } from 'react';
 
-import { DEFAULT_CATEGORY } from "src/constants";
-import usePostsQuery from "src/hooks/usePostsQuery";
-import PostCard from "src/routes/Feed/PostList/PostCard";
+import { DEFAULT_CATEGORY } from 'src/constants';
+import usePostsQuery from 'src/hooks/usePostsQuery';
+import PostCard from 'src/routes/Feed/PostList/PostCard';
 
-import { filterPosts } from "./filterPosts";
+import { filterPosts } from './filterPosts';
 
 type Props = {
   q: string;
@@ -18,9 +18,9 @@ const PinnedPosts: React.FC<Props> = ({ q }) => {
       posts: data,
       q,
       category: DEFAULT_CATEGORY,
-      order: "desc",
+      order: 'desc',
     });
-    return baseFiltered.filter((post) => post.tags?.includes("Pinned"));
+    return baseFiltered.filter((post) => post.tags?.includes('Pinned'));
   }, [data, q]);
 
   if (filteredPosts.length === 0) return null;

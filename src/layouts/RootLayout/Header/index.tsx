@@ -1,8 +1,8 @@
-import { zIndexes } from "src/styles/zIndexes";
+import { zIndexes } from 'src/styles/zIndexes';
 
-import Logo from "./Logo";
-import NavBar from "./NavBar";
-import ThemeToggle from "./ThemeToggle";
+import Logo from './Logo';
+import NavBar from './NavBar';
+import ThemeToggle from './ThemeToggle';
 
 type Props = {
   fullWidth: boolean;
@@ -16,7 +16,7 @@ const Header: React.FC<Props> = ({ fullWidth }) => {
       <div
         data-full-width={fullWidth}
         className={`mx-auto flex h-12 w-full items-center justify-between px-4 ${
-          fullWidth ? "md:px-24" : ""
+          fullWidth ? 'md:px-24' : ''
         } max-w-screen-lg`}
       >
         <Logo />

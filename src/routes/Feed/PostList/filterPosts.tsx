@@ -1,5 +1,5 @@
-import { DEFAULT_CATEGORY } from "src/constants";
-import { TPost } from "src/types";
+import { DEFAULT_CATEGORY } from 'src/constants';
+import { TPost } from 'src/types';
 
 interface FilterPostsParams {
   posts: TPost[];
@@ -14,11 +14,11 @@ export function filterPosts({
   q,
   tag = undefined,
   category = DEFAULT_CATEGORY,
-  order = "desc",
+  order = 'desc',
 }: FilterPostsParams): TPost[] {
   return posts
     .filter((post) => {
-      const tagContent = post.tags ? post.tags.join(" ") : "";
+      const tagContent = post.tags ? post.tags.join(' ') : '';
       const searchContent = post.title + post.summary + tagContent;
       return (
         searchContent.toLowerCase().includes(q.toLowerCase()) &&
@@ -30,6 +30,6 @@ export function filterPosts({
     .sort((a, b) => {
       const dateA = new Date(a.date.start_date).getTime();
       const dateB = new Date(b.date.start_date).getTime();
-      return order === "desc" ? dateB - dateA : dateA - dateB;
+      return order === 'desc' ? dateB - dateA : dateA - dateB;
     });
 }

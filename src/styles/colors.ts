@@ -9,7 +9,7 @@ import {
   indigoDark,
   red,
   redDark,
-} from "@radix-ui/colors";
+} from '@radix-ui/colors';
 
 export type Colors = typeof colors.light & typeof colors.dark;
 

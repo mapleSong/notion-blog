@@ -1,8 +1,8 @@
-import { ThemeProvider as _ThemeProvider } from "@emotion/react";
-import { createTheme } from "src/styles";
-import { SchemeType } from "src/types";
+import { ThemeProvider as _ThemeProvider } from '@emotion/react';
+import { createTheme } from 'src/styles';
+import { SchemeType } from 'src/types';
 
-import { Global } from "./Global";
+import { Global } from './Global';
 
 type Props = {
   scheme: SchemeType;

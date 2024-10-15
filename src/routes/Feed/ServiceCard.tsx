@@ -8,7 +8,7 @@ const ServiceCard: React.FC = () => {
   if (!CONFIG.projects) return null;
   return (
     <>
-      <div className="p-1 mb-3">
+      <div className="mb-3 p-1">
         <Emoji>🌟</Emoji> Service
       </div>
       <div className="mb-9 flex flex-col rounded-xl bg-white p-1 dark:bg-[rgb(40,40,40)]">
@@ -18,7 +18,7 @@ const ServiceCard: React.FC = () => {
             href={`${project.href}`}
             rel="noreferrer"
             target="_blank"
-            className="flex gap-3 items-center p-3 text-gray-700 rounded-xl cursor-pointer hover:bg-gray-200 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-100"
+            className="flex cursor-pointer items-center gap-3 rounded-xl p-3 text-gray-700 hover:bg-gray-200 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-100"
           >
             <AiFillCodeSandboxCircle className="text-2xl leading-8" />
             <div className="text-sm leading-5">{project.name}</div>

@@ -1,10 +1,9 @@
-import { Hydrate, QueryClientProvider } from "@tanstack/react-query";
-import { RootLayout } from "src/layouts";
-import { queryClient } from "src/libs/react-query";
+import { Hydrate, QueryClientProvider } from '@tanstack/react-query';
+import 'src/assets/styles.css';
+import { RootLayout } from 'src/layouts';
+import { queryClient } from 'src/libs/react-query';
 
-import { AppPropsWithLayout } from "../types";
-
-import "src/assets/styles.css";
+import { AppPropsWithLayout } from '../types';
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout || ((page) => page);

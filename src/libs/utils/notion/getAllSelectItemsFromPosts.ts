@@ -1,7 +1,7 @@
-import { TPosts } from "src/types";
+import { TPosts } from 'src/types';
 
 export function getAllSelectItemsFromPosts(
-  key: "tags" | "category",
+  key: 'tags' | 'category',
   posts: TPosts,
 ) {
   const selectedPosts = posts.filter((post) => post?.[key]);

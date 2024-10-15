@@ -1,17 +1,17 @@
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 
-import { CONFIG } from "site.config";
-import { TPost } from "src/types";
+import { CONFIG } from 'site.config';
+import { TPost } from 'src/types';
 
 const UtterancesComponent = dynamic(
   () => {
-    return import("./Utterances");
+    return import('./Utterances');
   },
   { ssr: false },
 );
 const CusdisComponent = dynamic(
   () => {
-    return import("./Cusdis");
+    return import('./Cusdis');
   },
   { ssr: false },
 );

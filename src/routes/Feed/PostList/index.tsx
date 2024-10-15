@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
-import { DEFAULT_CATEGORY } from "src/constants";
-import usePostsQuery from "src/hooks/usePostsQuery";
-import PostCard from "src/routes/Feed/PostList/PostCard";
+import { DEFAULT_CATEGORY } from 'src/constants';
+import usePostsQuery from 'src/hooks/usePostsQuery';
+import PostCard from 'src/routes/Feed/PostList/PostCard';
 
 type Props = {
   q: string;
@@ -17,14 +17,14 @@ const PostList: React.FC<Props> = ({ q }) => {
 
   const currentTag = `${router.query.tag || ``}` || undefined;
   const currentCategory = `${router.query.category || ``}` || DEFAULT_CATEGORY;
-  const currentOrder = `${router.query.order || ``}` || "desc";
+  const currentOrder = `${router.query.order || ``}` || 'desc';
 
   useEffect(() => {
     setFilteredPosts(() => {
       let newFilteredPosts = data;
       // keyword
       newFilteredPosts = newFilteredPosts.filter((post) => {
-        const tagContent = post.tags ? post.tags.join(" ") : "";
+        const tagContent = post.tags ? post.tags.join(' ') : '';
         const searchContent = post.title + post.summary + tagContent;
         return searchContent.toLowerCase().includes(q.toLowerCase());
       });
@@ -44,7 +44,7 @@ const PostList: React.FC<Props> = ({ q }) => {
         );
       }
       // order
-      if (currentOrder !== "desc") {
+      if (currentOrder !== 'desc') {
         newFilteredPosts = newFilteredPosts.reverse();
       }
 

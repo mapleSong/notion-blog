@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import { TCategories } from "src/types";
+import { TCategories } from 'src/types';
 
-import CategorySelect from "./CategorySelect";
-import OrderButtons from "./OrderButtons";
+import CategorySelect from './CategorySelect';
+import OrderButtons from './OrderButtons';
 
 type Props = {};
 

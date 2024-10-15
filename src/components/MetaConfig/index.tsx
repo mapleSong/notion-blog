@@ -1,11 +1,11 @@
-import Head from "next/head";
+import Head from 'next/head';
 
-import { CONFIG } from "site.config";
+import { CONFIG } from 'site.config';
 
 export type MetaConfigProps = {
   title: string;
   description: string;
-  type: "Website" | "Post" | "Page" | string;
+  type: 'Website' | 'Post' | 'Page' | string;
   date?: string;
   image?: string;
   url: string;
@@ -31,7 +31,7 @@ const MetaConfig: React.FC<MetaConfigProps> = (props) => {
       <meta name="twitter:card" content="summary_large_image" />
       {props.image && <meta name="twitter:image" content={props.image} />}
       {/* post */}
-      {props.type === "Post" && (
+      {props.type === 'Post' && (
         <>
           <meta property="article:published_time" content={props.date} />
           <meta property="article:author" content={CONFIG.profile.name} />

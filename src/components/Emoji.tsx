@@ -1,11 +1,11 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode } from 'react';
 
-import { Noto_Color_Emoji } from "next/font/google";
+import { Noto_Color_Emoji } from 'next/font/google';
 
 const notoColorEmoji = Noto_Color_Emoji({
-  weight: ["400"],
-  subsets: ["emoji"],
-  fallback: ["Apple Color Emoji"],
+  weight: ['400'],
+  subsets: ['emoji'],
+  fallback: ['Apple Color Emoji'],
 });
 
 type Props = {

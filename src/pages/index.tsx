@@ -1,15 +1,15 @@
-import { GetStaticProps } from "next";
+import { GetStaticProps } from 'next';
 
-import { dehydrate } from "@tanstack/react-query";
-import MetaConfig from "src/components/MetaConfig";
-import { queryKey } from "src/constants/queryKey";
-import { queryClient } from "src/libs/react-query";
-import { filterPosts } from "src/libs/utils/notion";
-import Feed from "src/routes/Feed";
+import { dehydrate } from '@tanstack/react-query';
+import MetaConfig from 'src/components/MetaConfig';
+import { queryKey } from 'src/constants/queryKey';
+import { queryClient } from 'src/libs/react-query';
+import { filterPosts } from 'src/libs/utils/notion';
+import Feed from 'src/routes/Feed';
 
-import { CONFIG } from "../../site.config";
-import { getPosts } from "../apis";
-import { NextPageWithLayout } from "../types";
+import { CONFIG } from '../../site.config';
+import { getPosts } from '../apis';
+import { NextPageWithLayout } from '../types';
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = filterPosts(await getPosts());
@@ -27,7 +27,7 @@ const FeedPage: NextPageWithLayout = () => {
   const meta = {
     title: CONFIG.blog.title,
     description: CONFIG.blog.description,
-    type: "website",
+    type: 'website',
     url: CONFIG.link,
   };
 

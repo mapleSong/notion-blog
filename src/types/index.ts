@@ -1,9 +1,9 @@
-import { ReactElement, ReactNode } from "react";
+import { ReactElement, ReactNode } from 'react';
 
-import { NextPage } from "next";
-import { AppProps } from "next/app";
+import { NextPage } from 'next';
+import { AppProps } from 'next/app';
 
-import { ExtendedRecordMap } from "notion-types";
+import { ExtendedRecordMap } from 'notion-types';
 
 // TODO: refactor types
 export type NextPageWithLayout<PageProps = {}> = NextPage<PageProps> & {
@@ -14,8 +14,8 @@ export type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-export type TPostStatus = "Private" | "Public" | "PublicOnDetail";
-export type TPostType = "Post" | "Paper" | "Page";
+export type TPostStatus = 'Private' | 'Public' | 'PublicOnDetail';
+export type TPostType = 'Post' | 'Paper' | 'Page';
 
 export type TPost = {
   id: string;
@@ -50,4 +50,4 @@ export type TCategories = {
   [category: string]: number;
 };
 
-export type SchemeType = "light" | "dark";
+export type SchemeType = 'light' | 'dark';

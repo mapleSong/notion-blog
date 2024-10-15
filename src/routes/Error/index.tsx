@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { Emoji } from "src/components/Emoji";
+import { Emoji } from 'src/components/Emoji';
 
 type Props = {};
 

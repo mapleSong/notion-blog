@@ -1,6 +1,6 @@
-import Script from "next/script";
+import Script from 'next/script';
 
-import { CONFIG } from "site.config";
+import { CONFIG } from 'site.config';
 
 const Scripts: React.FC = () => (
   <>

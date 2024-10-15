@@ -1,9 +1,9 @@
-import { GetServerSideProps } from "next";
-import { ISitemapField, getServerSideSitemap } from "next-sitemap";
+import { GetServerSideProps } from 'next';
+import { ISitemapField, getServerSideSitemap } from 'next-sitemap';
 
-import { CONFIG } from "site.config";
+import { CONFIG } from 'site.config';
 
-import { getPosts } from "../apis/notion-client/getPosts";
+import { getPosts } from '../apis/notion-client/getPosts';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const posts = await getPosts();
@@ -14,7 +14,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     loc: path,
     lastmod: new Date().toISOString(),
     priority: 0.7,
-    changefreq: "daily",
+    changefreq: 'daily',
   }));
 
   // Include the site root separately
@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     loc: CONFIG.link,
     lastmod: new Date().toISOString(),
     priority: 1.0,
-    changefreq: "daily",
+    changefreq: 'daily',
   });
 
   return getServerSideSitemap(ctx, fields);
