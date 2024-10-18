@@ -16,10 +16,10 @@ const PostCard: React.FC<Props> = ({ data }) => {
   const category = (data.category && data.category?.[0]) || undefined;
 
   return (
-    <Link href={`/${data.slug}`} className="relative mb-6 block">
+    <Link href={`/${data.slug}`} className="block relative mb-6">
       <article className="duration-300relative overflow-hidden rounded-lg bg-white shadow-md transition-shadow hover:shadow-lg dark:bg-[rgb(40,40,40)]">
         {category && (
-          <div className="absolute left-4 top-4 z-10">
+          <div className="absolute top-4 left-4 z-10">
             <Category>{category}</Category>
           </div>
         )}
@@ -36,12 +36,12 @@ const PostCard: React.FC<Props> = ({ data }) => {
         <div
           className={`p-4 ${!data.thumbnail ? 'pt-14' : ''} ${!category ? 'pt-6' : ''}`}
         >
-          <header className="mb-2 flex flex-col justify-between md:flex-row md:items-baseline">
-            <h2 className="mb-2 cursor-pointer text-lg font-medium md:mb-0 md:text-xl">
+          <header className="flex flex-col justify-between mb-2 md:flex-row md:items-baseline">
+            <h2 className="mb-2 text-lg font-medium cursor-pointer md:mb-0 md:text-xl">
               {data.title}
             </h2>
           </header>
-          <div className="mb-4 flex items-center gap-2 text-sm dark:text-gray-400">
+          <div className="flex gap-2 items-center mb-4 text-sm dark:text-gray-400">
             <div>
               {formatDate(
                 data?.date?.start_date || data.createdTime,

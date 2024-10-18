@@ -37,8 +37,6 @@ import 'prismjs/components/prism-yaml.js';
 
 // import Scripts from "src/layouts/RootLayout/Scripts"
 // import useGtagEffect from "./useGtagEffect"
-import useScheme from 'src/hooks/useScheme';
-
 import Header from './Header';
 import { ThemeProvider } from './ThemeProvider';
 
@@ -47,19 +45,18 @@ type Props = {
 };
 
 const RootLayout = ({ children }: Props) => {
-  const [scheme] = useScheme();
   //   useGtagEffect()
   useEffect(() => {
     Prism.highlightAll();
   }, []);
 
   return (
-    <ThemeProvider scheme={scheme}>
+    <ThemeProvider>
       {/* <Scripts /> */}
       {/* // TODO: replace react query */}
       {/* {metaConfig.type !== "Paper" && <Header />} */}
       <Header fullWidth={false} />
-      <main className="mx-auto w-full max-w-5xl px-4">{children}</main>
+      <main className="px-4 mx-auto w-full max-w-5xl">{children}</main>
     </ThemeProvider>
   );
 };

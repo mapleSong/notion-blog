@@ -1,21 +1,19 @@
-import { ThemeProvider as _ThemeProvider } from '@emotion/react';
+// import { ThemeProvider as _ThemeProvider } from '@emotion/react';
+import { ReactNode } from 'react';
+
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
+
 import { createTheme } from 'src/styles';
 import { SchemeType } from 'src/types';
 
 import { Global } from './Global';
 
 type Props = {
-  scheme: SchemeType;
   children?: React.ReactNode;
 };
 
-export const ThemeProvider = ({ scheme, children }: Props) => {
-  const theme = createTheme({ scheme });
-
+export const ThemeProvider = ({ children }: Props) => {
   return (
-    <_ThemeProvider theme={theme}>
-      <Global />
-      {children}
-    </_ThemeProvider>
+    <NextThemesProvider attribute="data-theme">{children}</NextThemesProvider>
   );
 };

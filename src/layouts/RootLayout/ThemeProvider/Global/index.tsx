@@ -1,24 +1,27 @@
-import { Global as _Global, css, useTheme } from '@emotion/react';
-import { ThemeProvider as _ThemeProvider } from '@emotion/react';
+// import { ThemeProvider as _ThemeProvider } from '@emotion/react';
+import { useEffect, useState } from 'react';
+
+import { useTheme } from 'next-themes';
+
+import { Global as _Global, css } from '@emotion/react';
 
 export const Global = () => {
-  const theme = useTheme();
-  console.log(theme);
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
+  const currentTheme = theme || resolvedTheme;
+  console.log('currentTheme:', currentTheme);
   return (
     <_Global
       styles={css`
-        body {
-          margin: 0;
-          padding: 0;
-          color: ${theme.colors.gray12};
-          background-color: ${theme.colors.gray2};
-        }
-
-        * {
-          color-scheme: ${theme.scheme};
-          box-sizing: border-box;
-        }
-
         h1,
         h2,
         h3,
@@ -66,7 +69,7 @@ export const Global = () => {
           width: 100%;
           border: none;
           margin: 0;
-          border-top: 1px solid ${theme.colors.gray6};
+          border-top: 1px solid ${currentTheme === 'dark' ? '#333' : '#ccc'};
         }
       `}
     />
